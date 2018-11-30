@@ -15,9 +15,12 @@ public class DockerConnectMySQL {
 
       System.out.println("Connecting to database...");
       conn = DriverManager.getConnection(DB_URL,USER,PASS);
-
       stmt = conn.createStatement();
       String sql;
+      sql = "CREATE TABLE Persons (PersonID int, LastName varchar(255), FirstName varchar(255), Address varchar(255), City varchar(255) );";
+      stmt.executeQuery(sql);
+      sql = "INSERT INTO Persons (PersonID, LastName, FirstName, Address, City) VALUES (1, 'Sureshkumar', 'Deepak', 'Jackal Creek','Johannesburg');";
+      stmt.executeQuery(sql);
       sql = "SELECT PersonID, FirstName, LastName, Address, City FROM Persons";
       ResultSet rs = stmt.executeQuery(sql);
 
